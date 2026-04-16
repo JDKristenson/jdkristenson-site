@@ -14,18 +14,17 @@ For each item below:
 ## Open
 
 ### 1. Hero bio line mismatch
-- [ ] Current: `"Naval officer. McKinsey alumni. AI strategist. Author. I help organizations operate at the intersection of emerging technology, defense, and global commerce."`
-- **Locked bio line** (per `~/.claude/memory/feedback_jd_bio_line.md`): `"I'm a former Navy warship captain who went on to McKinsey and now leads client success at Ayna, an AI-enabled industrial consulting firm."`
-- Decision needed: replace hero tagline with locked bio line verbatim, or adapt it (retaining the exact "went on to McKinsey" and "AI-enabled" phrasing)
+- [x] **Resolved on branch** `content/accuracy-fixes`. Replaced VA's "Naval officer. McKinsey alumni. AI strategist. Author..." with the locked bio line verbatim plus a single value-prop sentence: `"I'm a former Navy warship captain who went on to McKinsey and now leads client success at Ayna, an AI-enabled industrial consulting firm. I help leaders navigate emerging technology, defense, and global commerce."`
 
 ### 2. Stats bar — "20+ Years of service & strategy"
 - [ ] Current: `20+`
 - Memory notes 25 years Navy
 - Decision needed: confirm the number (20+, 25, 25+)
 
-### 3. Stats bar — "NATO Advisory experience"
-- [ ] Current: claims NATO advisory
-- Decision needed: confirm this is accurate, or replace with a verified credential
+### 3. "NATO" claim appears in two places
+- [ ] Stats bar: `"NATO — Advisory experience"`
+- [ ] Expertise card #1 (Defense & Maritime Strategy): `"...allied force coordination across NATO and Indo-Pacific theaters."`
+- Decision needed: confirm both, or replace with verified credentials. If only one is accurate, flag which.
 
 ### 4. Stats bar — "Languages: EN, FR, ZH"
 - [ ] Current: EN, FR, ZH
@@ -33,9 +32,7 @@ For each item below:
 - Decision needed: confirm French, or drop to "EN, ZH" (and possibly adjust the count)
 
 ### 5. Second book placeholder
-- [ ] Current: `"New Title — In Progress · A forthcoming work exploring the intersection of technology, leadership, and strategic decision-making. Details to be announced."`
-- Actual forthcoming book (per memory): `"Command in the Age of AI"`
-- Decision needed: swap in the real title and write a one-paragraph description
+- [x] **Resolved on branch** `content/accuracy-fixes`. Swapped in real title: "Command in the Age of AI — Forthcoming. Details to be announced." Description intentionally minimal so JD can write the real blurb when the book copy is ready.
 
 ### 6. Newsletter — "The Bow Wave" → "Rudder Orders"
 - [x] **Resolved on branch** `content/rename-newsletter-to-rudder-orders` (pending merge). JD confirmed the newsletter is Rudder Orders. Replaced all four references in `index.html` (h2, epigraph, subscribe CTA, newsletter visual title) and rewrote the epigraph to match Navy terminology for rudder orders. Subscribe link still points to `#connect` — once we have the LinkedIn newsletter URL, update the href.
