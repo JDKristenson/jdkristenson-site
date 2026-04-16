@@ -39,8 +39,7 @@ For each item below:
 - [ ] Command in the Age of AI: add preorder / announcement link or "notify me" capture when available
 
 ### 9. Headshot
-- [x] **Resolved on branch** `content/accuracy-fixes`. JD confirmed "yes." Added `.hero-portrait` markup + CSS (duotone navy/brass filter, 280×360, right-side of hero, hidden below 1100px). Image source: `assets/jd-headshot.jpg`. Until JD drops the file, an `onerror` handler hides the broken img so the hero still looks clean.
-- **JD action needed:** drop a photo in `assets/jd-headshot.jpg` (spec in `assets/README.md`).
+- [x] **Resolved.** Line-drawing portrait added at `assets/jd-headshot.png`. CSS switched from duotone filter to `filter: invert(1)` + `mix-blend-mode: screen` so black linework on white renders as white lines on the navy hero. 280×360, right-side, hidden below 1100px. `onerror` handler retained.
 
 ### 10. Connect section — no form, no calendar link
 - [x] **Decision: leave lean.** JD confirmed "Leave." LinkedIn + mailto links stay as-is.

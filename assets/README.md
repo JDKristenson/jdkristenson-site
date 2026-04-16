@@ -6,18 +6,17 @@ Static assets referenced by `index.html`.
 
 | Filename | Purpose | Spec |
 |---|---|---|
-| `jd-headshot.jpg` | Hero portrait | Portrait crop, min 800×1000px, JPG or WebP. Color photo preferred — CSS applies a navy/brass duotone filter at render time. |
+| `jd-headshot.png` | Hero portrait | Line-drawing portrait PNG with transparent-or-white background. CSS inverts + screen-blends so black lines render as white on the navy hero. |
 | `og-image.jpg` | Social share card (LinkedIn, Twitter, Facebook) | **1200×630**, JPG or PNG under 5MB. Should include JD's name, one-line positioning, and visual elements from the site aesthetic (navy background, brass accents, compass motif). Generate once and reuse. |
 | `favicon.svg` | Browser tab icon | ✓ Already in place — SVG compass rose matching the site palette. |
 
-## How to add the headshot
+## How to swap the headshot
 
-1. Drop the image into this directory as `jd-headshot.jpg` (exact filename)
+1. Drop the new image into this directory as `jd-headshot.png` (exact filename)
 2. Preview locally: `python3 -m http.server 8000` from the repo root
-3. Commit the asset on a branch: `git checkout -b assets/add-headshot && git add assets/jd-headshot.jpg && git commit -m "assets: add JD headshot for hero"`
-4. Push and merge
+3. Commit and push. If the blend treatment needs adjusting for a different image style (color photo vs line art), tweak `.hero-portrait` in `index.html`.
 
-The hero markup already references `assets/jd-headshot.jpg`. Until the file exists, an `onerror` handler hides the `<img>` so the hero still looks clean without it.
+The hero markup references `assets/jd-headshot.png`. An `onerror` handler hides the `<img>` if the file is ever missing so the hero still looks clean.
 
 ## Future assets
 
