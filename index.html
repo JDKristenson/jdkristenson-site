@@ -101,6 +101,21 @@
     pointer-events: none;
   }
 
+  /* Hero portrait (duotone treatment) */
+  .hero-portrait {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 280px;
+    height: 360px;
+    object-fit: cover;
+    filter: grayscale(1) sepia(0.35) saturate(0.9) brightness(0.88) contrast(1.05);
+    border-left: 3px solid var(--brass);
+    z-index: 2;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
   .hero-content { max-width: 660px; position: relative; z-index: 1; }
 
   .hero-eyebrow {
@@ -466,6 +481,10 @@
   }
 
   /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .hero-portrait { display: none; }
+  }
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -527,12 +546,15 @@
     <text x="180" y="354" text-anchor="middle" fill="#b89a5a" font-family="serif" font-size="10" letter-spacing="2">S</text>
   </svg>
 
+  <img class="hero-portrait" src="assets/jd-headshot.jpg" alt="JD Kristenson" onerror="this.style.display='none'">
+
   <div class="hero-content">
     <p class="hero-eyebrow">Strategist &amp; Advisor</p>
     <h1>Navigating<br>complexity with<br><em>clarity.</em></h1>
     <p class="hero-tagline">
-      Naval officer. McKinsey alumni. AI strategist. Author. I help organizations
-      operate at the intersection of emerging technology, defense, and global commerce.
+      I'm a former Navy warship captain who went on to McKinsey and now leads
+      client success at Ayna, an AI-enabled industrial consulting firm. I help
+      leaders navigate emerging technology, defense, and global commerce.
     </p>
     <div class="hero-cta">
       <a href="#connect" class="btn-primary">Work With Me</a>
@@ -544,7 +566,7 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-number">20+</div>
+    <div class="stat-number">25+</div>
     <div class="stat-label">Years of service &amp; strategy</div>
   </div>
   <div class="stat">
@@ -618,7 +640,7 @@
         <div class="pub-spine-text">Naval Officer</div>
       </div>
       <div class="pub-info">
-        <span class="pub-tag">Co-author</span>
+        <span class="pub-tag">Lead Author</span>
         <div class="pub-title">Naval Officer's Guide<br><em style="font-size:0.9em;color:var(--text-secondary);">14th Edition</em></div>
         <p class="pub-desc">The definitive reference for U.S. Navy officers, updated for a new generation of naval leaders. Covering leadership, operations, and the professional development of the modern officer corps.</p>
       </div>
@@ -628,9 +650,9 @@
         <div class="pub-spine-text">Forthcoming</div>
       </div>
       <div class="pub-info">
-        <span class="pub-tag">Coming Soon</span>
-        <div class="pub-title">New Title<br><em style="font-size:0.9em;color:var(--text-secondary);">In Progress</em></div>
-        <p class="pub-desc">A forthcoming work exploring the intersection of technology, leadership, and strategic decision-making. Details to be announced.</p>
+        <span class="pub-tag">Forthcoming</span>
+        <div class="pub-title">Command in the Age of AI<br><em style="font-size:0.9em;color:var(--text-secondary);">Forthcoming</em></div>
+        <p class="pub-desc">Details to be announced.</p>
       </div>
     </div>
   </div>
@@ -645,7 +667,7 @@
       <div class="divider"></div>
       <p style="font-size:0.95rem;font-weight:300;color:var(--text-secondary);line-height:1.85;margin-bottom:2rem;">
         A biweekly dispatch for maritime and defense professionals. Industry M&amp;A moves.
-        Executive changes. AI adoption in the sector. Written from the front — not the sidelines.
+        Executive changes. AI adoption in the sector. Written from the front, not the sidelines.
       </p>
       <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.5rem;font-weight:300;">
         <em>"Rudder orders: small commands that keep the ship on course."</em>

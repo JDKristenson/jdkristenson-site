@@ -14,46 +14,36 @@ For each item below:
 ## Open
 
 ### 1. Hero bio line mismatch
-- [ ] Current: `"Naval officer. McKinsey alumni. AI strategist. Author. I help organizations operate at the intersection of emerging technology, defense, and global commerce."`
-- **Locked bio line** (per `~/.claude/memory/feedback_jd_bio_line.md`): `"I'm a former Navy warship captain who went on to McKinsey and now leads client success at Ayna, an AI-enabled industrial consulting firm."`
-- Decision needed: replace hero tagline with locked bio line verbatim, or adapt it (retaining the exact "went on to McKinsey" and "AI-enabled" phrasing)
+- [x] **Resolved on branch** `content/accuracy-fixes`. Replaced VA's "Naval officer. McKinsey alumni. AI strategist. Author..." with the locked bio line verbatim plus a single value-prop sentence: `"I'm a former Navy warship captain who went on to McKinsey and now leads client success at Ayna, an AI-enabled industrial consulting firm. I help leaders navigate emerging technology, defense, and global commerce."`
 
 ### 2. Stats bar — "20+ Years of service & strategy"
-- [ ] Current: `20+`
-- Memory notes 25 years Navy
-- Decision needed: confirm the number (20+, 25, 25+)
+- [x] **Resolved on branch** `content/accuracy-fixes`. JD confirmed `25+`. Changed stat-number from `20+` to `25+`.
 
-### 3. Stats bar — "NATO Advisory experience"
-- [ ] Current: claims NATO advisory
-- Decision needed: confirm this is accurate, or replace with a verified credential
+### 3. "NATO" claim appears in two places
+- [x] **Confirmed by JD.** Both references stand as-is (stats bar + expertise card #1). No code change required.
 
 ### 4. Stats bar — "Languages: EN, FR, ZH"
-- [ ] Current: EN, FR, ZH
-- Memory confirms Mandarin (ZH) fluency; French (FR) is not documented
-- Decision needed: confirm French, or drop to "EN, ZH" (and possibly adjust the count)
+- [x] **Confirmed by JD** ("Ouais"). EN, FR, ZH stands. No code change required.
 
 ### 5. Second book placeholder
-- [ ] Current: `"New Title — In Progress · A forthcoming work exploring the intersection of technology, leadership, and strategic decision-making. Details to be announced."`
-- Actual forthcoming book (per memory): `"Command in the Age of AI"`
-- Decision needed: swap in the real title and write a one-paragraph description
+- [x] **Resolved on branch** `content/accuracy-fixes`. Swapped in real title: "Command in the Age of AI — Forthcoming. Details to be announced." Description intentionally minimal so JD can write the real blurb when the book copy is ready.
 
 ### 6. Newsletter — "The Bow Wave" → "Rudder Orders"
 - [x] **Resolved on branch** `content/rename-newsletter-to-rudder-orders` (pending merge). JD confirmed the newsletter is Rudder Orders. Replaced all four references in `index.html` (h2, epigraph, subscribe CTA, newsletter visual title) and rewrote the epigraph to match Navy terminology for rudder orders. Subscribe link still points to `#connect` — once we have the LinkedIn newsletter URL, update the href.
 
-### 7. "Naval Officer's Guide — 14th Edition" co-author claim
-- [ ] Current: claims JD is co-author of the 14th edition
-- Decision needed: confirm this is accurate. If yes, add link to the book; if no, replace with an accurate publication.
+### 7. "Naval Officer's Guide — 14th Edition" authorship
+- [x] **Resolved on branch** `content/accuracy-fixes`. JD clarified he is **lead author** (not co-author). Updated pub-tag from "Co-author" to "Lead Author".
 
-### 8. Forthcoming book section missing link
-- [ ] Once #5 is resolved, add a preorder / announcement link or a "notify me" capture
+### 8. Publication links missing
+- [ ] Naval Officer's Guide (14th Ed): add publisher / purchase URL on pub-card
+- [ ] Command in the Age of AI: add preorder / announcement link or "notify me" capture when available
 
-### 9. No headshot
-- [ ] Site has no photo of JD
-- Decision needed: add duotone navy/brass headshot in hero, or leave text-only
+### 9. Headshot
+- [x] **Resolved on branch** `content/accuracy-fixes`. JD confirmed "yes." Added `.hero-portrait` markup + CSS (duotone navy/brass filter, 280×360, right-side of hero, hidden below 1100px). Image source: `assets/jd-headshot.jpg`. Until JD drops the file, an `onerror` handler hides the broken img so the hero still looks clean.
+- **JD action needed:** drop a photo in `assets/jd-headshot.jpg` (spec in `assets/README.md`).
 
 ### 10. Connect section — no form, no calendar link
-- [ ] Current: LinkedIn + mailto links only
-- Decision needed: add Calendly / scheduling link, or keep it lean
+- [x] **Decision: leave lean.** JD confirmed "Leave." LinkedIn + mailto links stay as-is.
 
 ---
 
