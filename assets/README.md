@@ -7,6 +7,8 @@ Static assets referenced by `index.html`.
 | Filename | Purpose | Spec |
 |---|---|---|
 | `jd-headshot.jpg` | Hero portrait | Portrait crop, min 800×1000px, JPG or WebP. Color photo preferred — CSS applies a navy/brass duotone filter at render time. |
+| `og-image.jpg` | Social share card (LinkedIn, Twitter, Facebook) | **1200×630**, JPG or PNG under 5MB. Should include JD's name, one-line positioning, and visual elements from the site aesthetic (navy background, brass accents, compass motif). Generate once and reuse. |
+| `favicon.svg` | Browser tab icon | ✓ Already in place — SVG compass rose matching the site palette. |
 
 ## How to add the headshot
 
