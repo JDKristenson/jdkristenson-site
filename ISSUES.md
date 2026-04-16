@@ -37,10 +37,8 @@ For each item below:
 - Actual forthcoming book (per memory): `"Command in the Age of AI"`
 - Decision needed: swap in the real title and write a one-paragraph description
 
-### 6. Newsletter — "The Bow Wave"
-- [ ] Current: `"The Bow Wave — Biweekly dispatch for maritime and defense professionals."`
-- Existing newsletter in the system (per memory): `"Rudder Orders"` — biweekly maritime tech LinkedIn newsletter
-- Decision needed: is "The Bow Wave" a new separate newsletter, a rename of Rudder Orders, or a VA invention? If it's real, fine. If not, replace with Rudder Orders or remove the section.
+### 6. Newsletter — "The Bow Wave" → "Rudder Orders"
+- [x] **Resolved on branch** `content/rename-newsletter-to-rudder-orders` (pending merge). JD confirmed the newsletter is Rudder Orders. Replaced all four references in `index.html` (h2, epigraph, subscribe CTA, newsletter visual title) and rewrote the epigraph to match Navy terminology for rudder orders. Subscribe link still points to `#connect` — once we have the LinkedIn newsletter URL, update the href.
 
 ### 7. "Naval Officer's Guide — 14th Edition" co-author claim
 - [ ] Current: claims JD is co-author of the 14th edition
