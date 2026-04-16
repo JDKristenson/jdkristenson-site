@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JD Kristenson — Strategist. Author. Advisor.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #152236;
+    --navy-light: #1e3352;
+    --brass: #b89a5a;
+    --brass-light: #d4b97a;
+    --cream: #f5f0e8;
+    --cream-mid: #ede5d4;
+    --text-primary: #f0ece4;
+    --text-secondary: #9aa8b8;
+    --text-muted: #5a6a7e;
+    --border: rgba(184, 154, 90, 0.2);
+    --border-subtle: rgba(255,255,255,0.07);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(13, 27, 42, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--brass-light);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--brass-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 100%;
+    background: linear-gradient(135deg, transparent 30%, rgba(30, 51, 82, 0.5) 100%);
+    pointer-events: none;
+  }
+
+  .hero-accent {
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--brass), transparent);
+    right: 45%;
+    opacity: 0.3;
+  }
+
+  /* Decorative compass rose */
+  .compass {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 360px; height: 360px;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .hero-content { max-width: 660px; position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--brass);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--brass-light);
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: var(--brass);
+    color: var(--navy);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--brass-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border: 1px solid rgba(184,154,90,0.4);
+    color: var(--brass-light);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--brass); color: var(--brass); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 2rem 4rem;
+    display: flex; gap: 0;
+  }
+
+  .stat {
+    flex: 1;
+    padding: 0 2.5rem;
+    border-right: 1px solid var(--border-subtle);
+  }
+  .stat:first-child { padding-left: 0; }
+  .stat:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: var(--brass-light);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block; width: 20px; height: 1px;
+    background: var(--brass);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .section-intro {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 3.5rem;
+  }
+
+  /* EXPERTISE GRID */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-subtle);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .expertise-card {
+    background: var(--navy);
+    padding: 2.5rem;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .expertise-card:hover { background: var(--navy-mid); }
+
+  .expertise-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 2.5rem; right: 2.5rem;
+    height: 2px;
+    background: var(--brass);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .expertise-card:hover::after { transform: scaleX(1); }
+
+  .expertise-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: rgba(184, 154, 90, 0.12);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .expertise-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
+  }
+
+  .expertise-desc {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  /* PUBLICATIONS */
+  .publications { background: var(--navy-mid); }
+
+  .pub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pub-card {
+    display: flex; gap: 1.5rem;
+    padding: 2rem;
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    transition: border-color 0.25s;
+  }
+  .pub-card:hover { border-color: rgba(184,154,90,0.35); }
+
+  .pub-spine {
+    width: 60px;
+    min-height: 90px;
+    flex-shrink: 0;
+    background: var(--navy-light);
+    border-left: 3px solid var(--brass);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .pub-spine-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brass);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .pub-info { flex: 1; }
+
+  .pub-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brass);
+    border: 1px solid rgba(184,154,90,0.35);
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pub-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .pub-desc {
+    font-size: 0.83rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* NEWSLETTER */
+  .newsletter-section {
+    background: var(--navy);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .newsletter-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .newsletter-visual {
+    position: relative;
+    height: 320px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .newsletter-visual-inner {
+    text-align: center;
+    z-index: 1;
+  }
+
+  .newsletter-title-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: var(--brass-light);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .newsletter-subtitle-display {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .wave-lines {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 80px; opacity: 0.15;
+  }
+
+  /* CONNECT */
+  .connect-section { background: var(--navy-mid); }
+
+  .connect-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .connect-wrap h2 { margin-bottom: 1rem; }
+
+  .connect-wrap p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .connect-links {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid var(--border-subtle);
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-left {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-right {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 40px; height: 1px;
+    background: var(--brass);
+    margin: 1.5rem 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero, section { padding: 5rem 1.5rem 4rem; }
+    .stats-bar { padding: 1.5rem; flex-wrap: wrap; gap: 1.5rem; }
+    .stat { border-right: none; padding: 0; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .pub-grid { grid-template-columns: 1fr; }
+    .newsletter-wrap { grid-template-columns: 1fr; gap: 3rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+  }
+
+  /* FADE IN */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * {
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  h1 { animation-delay: 0.25s; }
+  .hero-tagline { animation-delay: 0.4s; }
+  .hero-cta { animation-delay: 0.55s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">JD Kristenson</a>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-accent"></div>
+
+  <!-- Decorative compass rose SVG -->
+  <svg class="compass" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="180" cy="180" r="160" stroke="#b89a5a" stroke-width="0.5"/>
+    <circle cx="180" cy="180" r="120" stroke="#b89a5a" stroke-width="0.5"/>
+    <circle cx="180" cy="180" r="80" stroke="#b89a5a" stroke-width="0.5"/>
+    <circle cx="180" cy="180" r="40" stroke="#b89a5a" stroke-width="1"/>
+    <line x1="180" y1="20" x2="180" y2="340" stroke="#b89a5a" stroke-width="0.5"/>
+    <line x1="20" y1="180" x2="340" y2="180" stroke="#b89a5a" stroke-width="0.5"/>
+    <line x1="67" y1="67" x2="293" y2="293" stroke="#b89a5a" stroke-width="0.5"/>
+    <line x1="293" y1="67" x2="67" y2="293" stroke="#b89a5a" stroke-width="0.5"/>
+    <polygon points="180,20 172,180 180,160 188,180" fill="#b89a5a"/>
+    <polygon points="180,340 172,180 180,200 188,180" fill="#b89a5a" opacity="0.5"/>
+    <polygon points="20,180 180,172 160,180 180,188" fill="#b89a5a" opacity="0.5"/>
+    <polygon points="340,180 180,172 200,180 180,188" fill="#b89a5a" opacity="0.5"/>
+    <text x="180" y="12" text-anchor="middle" fill="#b89a5a" font-family="serif" font-size="10" letter-spacing="2">N</text>
+    <text x="180" y="354" text-anchor="middle" fill="#b89a5a" font-family="serif" font-size="10" letter-spacing="2">S</text>
+  </svg>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Strategist &amp; Advisor</p>
+    <h1>Navigating<br>complexity with<br><em>clarity.</em></h1>
+    <p class="hero-tagline">
+      Naval officer. McKinsey alumni. AI strategist. Author. I help organizations
+      operate at the intersection of emerging technology, defense, and global commerce.
+    </p>
+    <div class="hero-cta">
+      <a href="#connect" class="btn-primary">Work With Me</a>
+      <a href="#publications" class="btn-ghost">View Publications</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-number">20+</div>
+    <div class="stat-label">Years of service &amp; strategy</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">NATO</div>
+    <div class="stat-label">Advisory experience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">3</div>
+    <div class="stat-label">Languages: EN, FR, ZH</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">2</div>
+    <div class="stat-label">Published books</div>
+  </div>
+</div>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <p class="section-label">What I do</p>
+  <h2>Areas of Expertise</h2>
+  <p class="section-intro">
+    Decades of execution at the edge — from commanding warships to advising boardrooms.
+    I bring operational precision to complex strategic problems.
+  </p>
+
+  <div class="expertise-grid">
+    <div class="expertise-card">
+      <div class="expertise-num">01</div>
+      <div class="expertise-title">Defense &amp; Maritime Strategy</div>
+      <div class="expertise-desc">Deep operational expertise in naval leadership, procurement, and allied force coordination across NATO and Indo-Pacific theaters.</div>
+    </div>
+    <div class="expertise-card">
+      <div class="expertise-num">02</div>
+      <div class="expertise-title">AI Enablement &amp; Transformation</div>
+      <div class="expertise-desc">Translating emerging AI capabilities into real organizational leverage — workflow automation, intelligent systems, and enterprise adoption roadmaps.</div>
+    </div>
+    <div class="expertise-card">
+      <div class="expertise-num">03</div>
+      <div class="expertise-title">Management Consulting</div>
+      <div class="expertise-desc">McKinsey-trained strategic thinking applied to M&amp;A, market entry, organizational design, and competitive positioning for complex industries.</div>
+    </div>
+    <div class="expertise-card">
+      <div class="expertise-num">04</div>
+      <div class="expertise-title">Maritime Industry Intelligence</div>
+      <div class="expertise-desc">Covering mergers &amp; acquisitions, executive movements, AI adoption trends, and regulatory shifts shaping the global maritime sector.</div>
+    </div>
+    <div class="expertise-card">
+      <div class="expertise-num">05</div>
+      <div class="expertise-title">Executive Advisory</div>
+      <div class="expertise-desc">Trusted advisor to senior leaders on organizational change, crisis navigation, and building high-performance teams under pressure.</div>
+    </div>
+    <div class="expertise-card">
+      <div class="expertise-num">06</div>
+      <div class="expertise-title">Speaking &amp; Thought Leadership</div>
+      <div class="expertise-desc">Available for keynotes, panels, and media engagements on defense technology, AI strategy, and leadership in high-stakes environments.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="publications" id="publications">
+  <p class="section-label">Published Work</p>
+  <h2>Books &amp; Writing</h2>
+  <p class="section-intro">
+    Contributions to the canon of naval leadership and strategic thinking, written for practitioners who need to act — not just theorize.
+  </p>
+
+  <div class="pub-grid">
+    <div class="pub-card">
+      <div class="pub-spine">
+        <div class="pub-spine-text">Naval Officer</div>
+      </div>
+      <div class="pub-info">
+        <span class="pub-tag">Co-author</span>
+        <div class="pub-title">Naval Officer's Guide<br><em style="font-size:0.9em;color:var(--text-secondary);">14th Edition</em></div>
+        <p class="pub-desc">The definitive reference for U.S. Navy officers, updated for a new generation of naval leaders. Covering leadership, operations, and the professional development of the modern officer corps.</p>
+      </div>
+    </div>
+    <div class="pub-card">
+      <div class="pub-spine">
+        <div class="pub-spine-text">Forthcoming</div>
+      </div>
+      <div class="pub-info">
+        <span class="pub-tag">Coming Soon</span>
+        <div class="pub-title">New Title<br><em style="font-size:0.9em;color:var(--text-secondary);">In Progress</em></div>
+        <p class="pub-desc">A forthcoming work exploring the intersection of technology, leadership, and strategic decision-making. Details to be announced.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section" id="newsletter">
+  <div class="newsletter-wrap">
+    <div>
+      <p class="section-label">Biweekly Intelligence</p>
+      <h2>The Bow Wave</h2>
+      <div class="divider"></div>
+      <p style="font-size:0.95rem;font-weight:300;color:var(--text-secondary);line-height:1.85;margin-bottom:2rem;">
+        A biweekly dispatch for maritime and defense professionals. Industry M&amp;A moves.
+        Executive changes. AI adoption in the sector. Written from the front — not the sidelines.
+      </p>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.5rem;font-weight:300;">
+        <em>"The bow wave — the force that precedes the ship. Stay ahead of it."</em>
+      </p>
+      <a href="#connect" class="btn-primary">Subscribe to The Bow Wave</a>
+    </div>
+    <div class="newsletter-visual">
+      <div class="newsletter-visual-inner">
+        <div class="newsletter-title-display">The Bow Wave</div>
+        <div class="newsletter-subtitle-display">Maritime &amp; Defense Intelligence</div>
+        <div style="margin-top:2rem;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);">Published Every Two Weeks</div>
+      </div>
+      <svg class="wave-lines" viewBox="0 0 600 80" preserveAspectRatio="none">
+        <path d="M0,40 C100,20 200,60 300,40 C400,20 500,60 600,40" stroke="#b89a5a" stroke-width="1" fill="none"/>
+        <path d="M0,55 C100,35 200,75 300,55 C400,35 500,75 600,55" stroke="#b89a5a" stroke-width="0.5" fill="none"/>
+        <path d="M0,25 C100,5 200,45 300,25 C400,5 500,45 600,25" stroke="#b89a5a" stroke-width="0.5" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section class="connect-section" id="connect">
+  <div class="connect-wrap">
+    <p class="section-label" style="justify-content:center;">Get In Touch</p>
+    <h2>Let's Navigate<br><em style="color:var(--brass-light);font-style:italic;">Together</em></h2>
+    <p>
+      Open to consulting engagements, speaking opportunities, media inquiries,
+      and strategic advisory relationships. I respond personally.
+    </p>
+    <div class="connect-links">
+      <a href="https://linkedin.com/in/jdkristenson" class="btn-primary" target="_blank">LinkedIn</a>
+      <a href="mailto:jd@hazegray.ai" class="btn-ghost">Send an Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">JD Kristenson — jdkristenson.com</div>
+  <div class="footer-right">&copy; 2026 · All rights reserved</div>
+</footer>
+
+</body>
+</html>
